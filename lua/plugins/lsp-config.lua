@@ -14,9 +14,8 @@ return {
         ensure_installed = {
           "lua_ls",
           "bashls",
-          "jasonls", --json
-         -- "solargraph", -- ruby, but this fails, for not commented out
-          -- not sure how to add swift here - need to consult xcodebuild.nvim plugin sources
+          "ruby_lsp",
+          "biome",
         }
       })
     end
@@ -32,6 +31,17 @@ return {
         capabilites = capabilities
       })
       lspconfig.bashls.setup({
+        capabilites = capabilities
+      })
+      lspconfig.ruby_lsp.setup({
+        capabilites = capabilities,
+        filetypes = { "ruby", "rakefile" },
+        root_dir = function(fname)
+          return lspconfig.util.root_pattern('Gemfile', '.git', 'Fastfile')(fname)
+        or lspconfig.util.path.dirname(fname)
+        end,
+      })
+      lspconfig.biome.setup({
         capabilites = capabilities
       })
 
