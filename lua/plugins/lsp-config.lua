@@ -16,6 +16,7 @@ return {
           "bashls",
           "ruby_lsp",
           "biome",
+          "yamlls",
         }
       })
     end
@@ -42,6 +43,9 @@ return {
         end,
       })
       lspconfig.biome.setup({
+        capabilites = capabilities
+      })
+      lspconfig.yamlls.setup({
         capabilites = capabilities
       })
 
