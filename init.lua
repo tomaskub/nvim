@@ -25,6 +25,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
-local opts = { } 
+local opts = { }
 require("vim-options")
 require("lazy").setup("plugins", opts)
