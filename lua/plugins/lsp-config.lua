@@ -17,6 +17,7 @@ return {
           "ruby_lsp",
           "biome",
           "yamlls",
+          "pyright",
         }
       })
     end
@@ -29,13 +30,13 @@ return {
       local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities() -- setup for autocomplete from lsp support
       lspconfig.lua_ls.setup({
-        capabilites = capabilities
+        capabilities = capabilities
       })
       lspconfig.bashls.setup({
-        capabilites = capabilities
+        capabilities = capabilities
       })
       lspconfig.ruby_lsp.setup({
-        capabilites = capabilities,
+        capabilities = capabilities,
         filetypes = { "ruby", "rakefile" },
         root_dir = function(fname)
           return lspconfig.util.root_pattern('Gemfile', '.git', 'Fastfile')(fname)
@@ -43,11 +44,28 @@ return {
         end,
       })
       lspconfig.biome.setup({
-        capabilites = capabilities
+        capabilities = capabilities
       })
       lspconfig.yamlls.setup({
-        capabilites = capabilities
+        capabilities = capabilities
       })
+      lspconfig.pyright.setup({
+        capabilities = capabilities
+      })
+      lspconfig.sourcekit.setup({
+        capabilities = capabilities,
+        filetypes = { "swift", "objective-c", "objective-cpp" },
+root_dir = function(fname)
+          return lspconfig.util.root_pattern(
+            "package.swift",
+            ".git",
+            "*.xcodeproj",
+            "*.xcworkspace"
+          )(fname) or lspconfig.util.path.dirname(fname)
+        end,
+        cmd = { "/usr/bin/sourcekit-lsp"}
+      })
+
 
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
