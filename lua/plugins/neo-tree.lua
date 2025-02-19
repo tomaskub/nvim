@@ -15,6 +15,14 @@ return {
           ['Z'] = {'close_all_nodes', desc = 'close all directories'},
           ['z'] = {'expand_all_nodes', desc = 'close all directories'},
         }
+      },
+      event_handlers = {
+        {
+        event = "file_open_requested",
+        handler = function()
+          vim.cmd("Neotree close")
+        end
+        }
       }
     })
 
