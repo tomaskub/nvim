@@ -13,7 +13,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependecies = {
-      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lsp", -- source for lsp?
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       'saadparwaiz1/cmp_luasnip',
@@ -38,11 +38,11 @@ return {
         },
 
         mapping = cmp.mapping.preset.insert({
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ["<C-k>"] = cmp.mapping.select_prev_item(),
+          ["<C-j>"] = cmp.mapping.select_next_item(),
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ['<CR>'] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
           ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
@@ -63,17 +63,14 @@ return {
             end
           end, { 'i', 's' }),
         }),
+        -- sources for autocompletion
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
-          { name = 'luasnip' }, -- For luasnip users.
+          { name = 'cmp-nvim-lsp' },
+          { name = 'luasnip' },
           { name = 'buffer' },
           { name = 'path' },
-          --{ name = 'vsnip' }, -- For vsnip users.
         })
-        --[[ {
-          { name = 'buffer' },
-        }
-        ]] --
       })
     end
   }
