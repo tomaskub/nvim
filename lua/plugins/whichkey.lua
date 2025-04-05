@@ -9,4 +9,7 @@ return {
       desc = "Buffer local keymaps (which - key)",
     },
   },
+  config = function()
+    require('which-key').setup()
+  end,
 }
