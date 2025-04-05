@@ -7,9 +7,6 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  config = function()
-    require("lazygit").setup()
-  end,
 
   keys = {
     { "<leader>lz", "<cmd>LazyGit<cr>", desc = "LazyGit" }
