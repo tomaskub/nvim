@@ -3,9 +3,13 @@ return {
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   opts = {
-    -- add any opts here
-    -- for example
     provider = "gemini",
+    gemini = {
+      model = "gemini-2.5-pro-exp-03-25",
+      temperature = 0.7,
+      max_tokens = 8192,
+      timeout = 20.0,
+    },
     modifiable = true,
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
