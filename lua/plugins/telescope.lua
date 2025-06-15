@@ -19,6 +19,7 @@ return {
         builtin.live_grep,
         { desc = "Live grep in cwd" }
       )
+      vim.keymap.set ('n', '<leader>fh', builtin.help_tags, { desc = "Fuzzy find help tags for neovim" })
     end
   },
 
