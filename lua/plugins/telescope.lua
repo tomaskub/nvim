@@ -20,6 +20,7 @@ return {
         { desc = "Live grep in cwd" }
       )
       vim.keymap.set ('n', '<leader>fh', builtin.help_tags, { desc = "Fuzzy find help tags for neovim" })
+      vim.keymap.set ('n', '<leader>fb', builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find inside current buffer" })
     end
   },
 
