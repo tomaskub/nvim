@@ -3,12 +3,15 @@ return {
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   opts = {
-    provider = "gemini",
+    providers = {
     gemini = {
-      model = "gemini-2.5-pro-exp-03-25",
-      temperature = 0.7,
-      max_tokens = 8192,
-      timeout = 20.0,
+      model = "gemini-2.5-flash-preview-05-20",
+      extra_request_body = {
+          temperature = 0.7,
+          max_tokens = 8192,
+          timeout = 20.0,
+        },
+    },
     },
     modifiable = true,
   },
