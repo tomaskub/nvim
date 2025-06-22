@@ -18,6 +18,8 @@ return {
           "biome",
           "yamlls",
           "pyright",
+          "kotlin_language_server",
+          "gopls",
         }
       })
     end
@@ -52,6 +54,9 @@ return {
       lspconfig.pyright.setup({
         capabilities = capabilities
       })
+      lspconfig.kotlin_language_server.setup({
+        capabilities = capabilities
+      })
       lspconfig.sourcekit.setup({
         capabilities = capabilities,
         filetypes = { "swift", "objective-c", "objective-cpp" },
@@ -64,6 +69,9 @@ root_dir = function(fname)
           )(fname) or lspconfig.util.path.dirname(fname)
         end,
         cmd = { "/usr/bin/sourcekit-lsp"}
+      })
+      lspconfig.gopls.setup({
+        capabilities = capabilities
       })
 
 
