@@ -4,7 +4,7 @@ return {
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
   opts = {
-    file_types = { "markdown", "Avante" },
+    file_types = { "markdown"},
     -- You can add other render-markdown options here if needed
     heading = {
       position = 'inline',
